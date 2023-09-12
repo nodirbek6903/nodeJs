@@ -6,5 +6,15 @@ const os = require("os")
 //information
 // console.log(os.cpus());
 
-//architect
-console.log(os.arch());
+//architecture
+// console.log(os.arch());
+
+//free memory
+// console.log(os.freemem());
+
+//total memory
+// console.log(os.totalmem());
+
+//entry point
+
+console.log(os.homedir());
