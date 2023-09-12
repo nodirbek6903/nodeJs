@@ -21,5 +21,11 @@ fs.writeFile(path.join(__dirname,"notes","december.txt"),"Create new course Node
         if(err) throw new Error()
 
         console.log("File was changed successfully");
+
+        fs.readFile(path.join(__dirname,"notes","december.txt"), "utf-8", (err,data) => {
+            if(err) throw new Error()
+        
+            console.log(Buffer.from(data).toString());
+        })
     })
 })
