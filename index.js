@@ -1,17 +1,31 @@
 const http = require("http")
+const fs = require("fs")
+const path = require("path")
 
 const server = http.createServer((request,response) => {
     if(request.method === "GET"){
 
         response.writeHead(200, {"Content-Type": "text/html"})
 
-        response.end(`
-        <h2>Send Name</h2>
-        <form method="post" action="/">
-            <input name="name"  placeholder="Enter your name" />
-            <button type="submit">Send Name</button>
-        </form>
-        `)
+        if(request.url = "/"){
+            fs.readFile(path.join(__dirname,"templates", "index.html"),"utf-8",(err,content) => {
+                if(err) throw Error()
+                response.end(content)
+            })
+        }
+        else if(request.url = "/about"){
+            fs.readFile(path.join(__dirname,"templates","about.html"),"utf-8", (err,content) => {
+                if(err) throw Error()
+                response.end(content)
+            })
+        }
+        else if(request.url = "/contact"){
+            fs.readFile(path.join(__dirname,"templates","contact.html"),"utf-8",(err,content) => {
+                if(err) throw Error()
+                response.end(content)
+            })
+        }
+
     }
     else if (request.method === "POST"){
         const name = []
